@@ -5,12 +5,6 @@ const app =  express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("static"));
 
-fs.readFile('credentials.json', (err, content) => {
-    if (err) return console.log('Error loading client secret file:', err);
-    // Authorize a client with credentials, then call the Google Drive API.
-    authorize(JSON.parse(content), listFiles);
-  });
-
 
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/signup.html")
